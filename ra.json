@@ -1,0 +1,848 @@
+[
+  {
+    "disco": "Les Enfants",
+    "evento": "Noizer pres. Kaiser, Linkan Ray",
+    "fecha": "JUE, 18 SEPT",
+    "url_evento": "https://es.ra.co/events/2238902",
+    "generos": "Techno",
+    "hora": "11:30 PM - 05:00 AM",
+    "url_imagen": ""
+  },
+  {
+    "disco": "Les Enfants",
+    "evento": "Pegatina pres. Javier Carballo, Enzo, Rindeau",
+    "fecha": "VIE, 19 SEPT",
+    "url_evento": "https://es.ra.co/events/2226495",
+    "generos": "",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": ""
+  },
+  {
+    "disco": "Les Enfants",
+    "evento": "Enfants and the gang Carry On",
+    "fecha": "SÁB, 20 SEPT",
+    "url_evento": "https://es.ra.co/events/2227042",
+    "generos": "",
+    "hora": "11:30 PM - 06:00 AM",
+    "url_imagen": ""
+  },
+  {
+    "disco": "Les Enfants",
+    "evento": "■ checkpoint pres. Special La Mercè with Manu Oubiña, Adria b2b Sampol",
+    "fecha": "MAR, 23 SEPT",
+    "url_evento": "https://es.ra.co/events/2240771",
+    "generos": "Electro",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/880f6860d32d1b776f07d7a16de74db42976f093.jpg"
+  },
+  {
+    "disco": "Les Enfants",
+    "evento": "Noizer pres. Denise Rabe, Rocco Fx",
+    "fecha": "JUE, 25 SEPT",
+    "url_evento": "https://es.ra.co/events/2238910",
+    "generos": "Techno",
+    "hora": "11:30 PM - 05:00 AM",
+    "url_imagen": ""
+  },
+  {
+    "disco": "Les Enfants",
+    "evento": "JustWaxx pres. Sansibar live, Sohrab & LVCA",
+    "fecha": "VIE, 26 SEPT",
+    "url_evento": "https://es.ra.co/events/2114254",
+    "generos": "Techno, Electro",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/8c40735c977d6db325c492e3faf727c6a4acd47e.jpg"
+  },
+  {
+    "disco": "Les Enfants",
+    "evento": "Les Enfants pres. Djebali + Miroloja (Release Party LER006)",
+    "fecha": "SÁB, 27 SEPT",
+    "url_evento": "https://es.ra.co/events/2204365",
+    "generos": "Minimal, Deep House",
+    "hora": "11:30 PM - 06:00 AM",
+    "url_imagen": ""
+  },
+  {
+    "disco": "Les Enfants",
+    "evento": "Francesco Del Garda (All Night Long)",
+    "fecha": "VIE, 03 OCT",
+    "url_evento": "https://es.ra.co/events/2239134",
+    "generos": "",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": ""
+  },
+  {
+    "disco": "Les Enfants",
+    "evento": "Les Enfants pres. Dan Ghenacia b2b DJ Senc",
+    "fecha": "VIE, 10 OCT",
+    "url_evento": "https://es.ra.co/events/2189517",
+    "generos": "Techno, Electro",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/ae782871a4943808c36a9424e6c5c66a93151f42.jpg"
+  },
+  {
+    "disco": "Les Enfants",
+    "evento": "Les Enfants Halloween Edition pres. Rhadoo All Night Long",
+    "fecha": "VIE, 31 OCT",
+    "url_evento": "https://es.ra.co/events/2202313",
+    "generos": "Minimal, Deep House",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": ""
+  },
+  {
+    "disco": "Les Enfants",
+    "evento": "enrenou showcase pres. Edward, ildec",
+    "fecha": "SÁB, 13 DIC",
+    "url_evento": "https://es.ra.co/events/2189519",
+    "generos": "Techno, House",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/356929083a21aebfeec30b5bc30b898cb23bfe86.png"
+  },
+  {
+    "disco": "Les Enfants",
+    "evento": "Les Enfants pres NYE with Hamish & Toby, Javier Carballo & LAIA",
+    "fecha": "MIÉ, 31 DIC",
+    "url_evento": "https://es.ra.co/events/2221048",
+    "generos": "House, Electro",
+    "hora": "11:59 PM - 07:00 AM",
+    "url_imagen": "https://images.ra.co/fcd87af929649b8c9dc5678e019b947a02af0545.jpg"
+  },
+  {
+    "disco": "Macarena Club",
+    "evento": "Move Your Body",
+    "fecha": "MIÉ, 17 SEPT",
+    "url_evento": "https://es.ra.co/events/2240236",
+    "generos": "",
+    "hora": "11:59 PM - 05:00 AM",
+    "url_imagen": "https://images.ra.co/148b8f484144a8f11ea716ea66e1be4107f56282.jpg"
+  },
+  {
+    "disco": "Macarena Club",
+    "evento": "Funk D'Void & Friends",
+    "fecha": "JUE, 18 SEPT",
+    "url_evento": "https://es.ra.co/events/2240241",
+    "generos": "",
+    "hora": "11:59 PM - 05:00 AM",
+    "url_imagen": "https://images.ra.co/e8cb6846b7f5d3755397310ab10ef1a0add1824a.jpg"
+  },
+  {
+    "disco": "Macarena Club",
+    "evento": "Tempesta Music",
+    "fecha": "VIE, 19 SEPT",
+    "url_evento": "https://es.ra.co/events/2240242",
+    "generos": "",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/c06050aff7af9a8c97f3a75022eeed5f6729ee5b.jpg"
+  },
+  {
+    "disco": "Macarena Club",
+    "evento": "TimeTunnel Night",
+    "fecha": "SÁB, 20 SEPT",
+    "url_evento": "https://es.ra.co/events/2240245",
+    "generos": "",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/474eb8c5741baadc041b6e6f89793e2aa334b46f.jpg"
+  },
+  {
+    "disco": "Macarena Club",
+    "evento": "Selectors",
+    "fecha": "DOM, 21 SEPT",
+    "url_evento": "https://es.ra.co/events/2240248",
+    "generos": "",
+    "hora": "11:59 PM - 05:00 AM",
+    "url_imagen": "https://images.ra.co/a0c07e7c99b51046a027ad4b7513c5dbac955da1.jpg"
+  },
+  {
+    "disco": "Macarena Club",
+    "evento": "Memento Xs",
+    "fecha": "LUN, 22 SEPT",
+    "url_evento": "https://es.ra.co/events/2240251",
+    "generos": "",
+    "hora": "11:59 PM - 05:00 AM",
+    "url_imagen": "https://images.ra.co/c14f3b4b16efb82f039cf36463ad2cf53d75f6d3.jpg"
+  },
+  {
+    "disco": "Macarena Club",
+    "evento": "Bridge48",
+    "fecha": "MAR, 23 SEPT",
+    "url_evento": "https://es.ra.co/events/2240257",
+    "generos": "",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/d08c48c367ee2fe3bf0f095738a4181bf7ddcdfb.jpg"
+  },
+  {
+    "disco": "Macarena Club",
+    "evento": "Diskotek",
+    "fecha": "MIÉ, 24 SEPT",
+    "url_evento": "https://es.ra.co/events/2240258",
+    "generos": "",
+    "hora": "11:59 PM - 05:00 AM",
+    "url_imagen": "https://images.ra.co/ede18f0e69c6a017dcecd7300e2467fe267c8e60.jpg"
+  },
+  {
+    "disco": "Macarena Club",
+    "evento": "Mad Radio Night",
+    "fecha": "JUE, 25 SEPT",
+    "url_evento": "https://es.ra.co/events/2240260",
+    "generos": "",
+    "hora": "11:59 PM - 05:00 AM",
+    "url_imagen": "https://images.ra.co/e40989ce96f7ace941257e3252ea8590163c88a0.jpg"
+  },
+  {
+    "disco": "Macarena Club",
+    "evento": "United Techno presents Red Room",
+    "fecha": "VIE, 26 SEPT",
+    "url_evento": "https://es.ra.co/events/2240264",
+    "generos": "",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/56ea767d6c233cb85db238b67eae3b3732aaf703.jpg"
+  },
+  {
+    "disco": "Macarena Club",
+    "evento": "Karbo All Night Long",
+    "fecha": "SÁB, 27 SEPT",
+    "url_evento": "https://es.ra.co/events/2240267",
+    "generos": "",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/e58a379f66e3db82151a429ae783c5d15d9cb500.jpg"
+  },
+  {
+    "disco": "Macarena Club",
+    "evento": "Selectors",
+    "fecha": "DOM, 28 SEPT",
+    "url_evento": "https://es.ra.co/events/2240271",
+    "generos": "",
+    "hora": "11:59 PM - 05:00 AM",
+    "url_imagen": "https://images.ra.co/dcdad12e80d0cc77294ab773adc4787df47f1ed7.jpg"
+  },
+  {
+    "disco": "Macarena Club",
+    "evento": "Memento Xs",
+    "fecha": "LUN, 29 SEPT",
+    "url_evento": "https://es.ra.co/events/2240272",
+    "generos": "",
+    "hora": "11:59 PM - 05:00 AM",
+    "url_imagen": "https://images.ra.co/fd7092874b16b28c47c65cf80e85352be35357e3.jpg"
+  },
+  {
+    "disco": "Macarena Club",
+    "evento": "DSOH meets Personal Belongings",
+    "fecha": "MAR, 30 SEPT",
+    "url_evento": "https://es.ra.co/events/2240274",
+    "generos": "",
+    "hora": "11:59 PM - 05:00 AM",
+    "url_imagen": "https://images.ra.co/183c7ea642dc30b11b2a44656ae39b098836c070.jpg"
+  },
+  {
+    "disco": "La Terrazza",
+    "evento": "Soundset Sessions w/ davyboi",
+    "fecha": "JUE, 18 SEPT",
+    "url_evento": "https://es.ra.co/events/2219087",
+    "generos": "Trance, House",
+    "hora": "09:00 PM - 03:00 AM",
+    "url_imagen": "https://images.ra.co/1ac8194dba2b9e1dcb58cd20406766320acfc496.jpg"
+  },
+  {
+    "disco": "La Terrazza",
+    "evento": "[Ultimos 100 tickets] Throwback 7th ANNIVERSARY - Back to 80',90' & 00' at La Terrrazza",
+    "fecha": "VIE, 19 SEPT",
+    "url_evento": "https://es.ra.co/events/2215242",
+    "generos": "",
+    "hora": "07:00 PM - 11:59 PM",
+    "url_imagen": "https://images.ra.co/7131911b72e81bca017e0da481bc1426020126cc.jpg"
+  },
+  {
+    "disco": "La Terrazza",
+    "evento": "Frrridays Fridays with Roman Flügel & Iro Aka",
+    "fecha": "VIE, 19 SEPT",
+    "url_evento": "https://es.ra.co/events/2257099",
+    "generos": "House, Electronica",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/6ff2cc66b163b496e7e288416b58d952d61cb7dc.jpg"
+  },
+  {
+    "disco": "La Terrazza",
+    "evento": "30 Yearrrs of House with Ian Pooley, César de Melero & La Feria Prim",
+    "fecha": "SÁB, 20 SEPT",
+    "url_evento": "https://es.ra.co/events/2257108",
+    "generos": "House, Electronica",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/7a6a8a5085f5036b3eb8f8345af76dd591ff550a.jpg"
+  },
+  {
+    "disco": "La Terrazza",
+    "evento": "Retro Future Disco Club with Sandy Rivera - Open Air",
+    "fecha": "MAR, 23 SEPT",
+    "url_evento": "https://es.ra.co/events/2242934",
+    "generos": "House, Disco",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/8ac53ffe80dcca1dea1ed30e388877e84b69ee7b.png"
+  },
+  {
+    "disco": "La Terrazza",
+    "evento": "Soundset Sess. with JOKESONYOU",
+    "fecha": "JUE, 25 SEPT",
+    "url_evento": "https://es.ra.co/events/2219092",
+    "generos": "Trance, House",
+    "hora": "09:00 PM - 03:00 AM",
+    "url_imagen": "https://images.ra.co/1ac8194dba2b9e1dcb58cd20406766320acfc496.jpg"
+  },
+  {
+    "disco": "La Terrazza",
+    "evento": "Tenax meets La Terrrazza with Alex Neri b2b Giammarco Orsini",
+    "fecha": "VIE, 26 SEPT",
+    "url_evento": "https://es.ra.co/events/2257115",
+    "generos": "House, Electronica",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/2d2a8839bf57ccdf326de47696b97d10ded34bd7.jpg"
+  },
+  {
+    "disco": "La Terrazza",
+    "evento": "Happy Techno at La Terrrazza Barcelona - Open Air / Daytime w/ Matthias Tanzmann, Lexlay",
+    "fecha": "SÁB, 27 SEPT",
+    "url_evento": "https://es.ra.co/events/2122307",
+    "generos": "Tech House, Electronica",
+    "hora": "07:00 PM - 11:59 PM",
+    "url_imagen": "https://images.ra.co/f12b9cdd1dd3c1cee322c38b2ef9564ae0d5badf.jpg"
+  },
+  {
+    "disco": "La Terrazza",
+    "evento": "30 Yearrrs of Dancing with The Magician, Alexander Som & Eli Kapowski",
+    "fecha": "SÁB, 27 SEPT",
+    "url_evento": "https://es.ra.co/events/2255684",
+    "generos": "House, Electronica",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/042c9c0d848fe5d65b7698f2ec01d551a5be54f8.jpg"
+  },
+  {
+    "disco": "La Terrazza",
+    "evento": "Soundset Sess. Power Sunday",
+    "fecha": "DOM, 28 SEPT",
+    "url_evento": "https://es.ra.co/events/2219096",
+    "generos": "Trance, House",
+    "hora": "07:00 PM - 01:00 AM",
+    "url_imagen": "https://images.ra.co/1ac8194dba2b9e1dcb58cd20406766320acfc496.jpg"
+  },
+  {
+    "disco": "La Terrazza",
+    "evento": "Soundset Sessions with Upper90",
+    "fecha": "JUE, 02 OCT",
+    "url_evento": "https://es.ra.co/events/2222508",
+    "generos": "Trance, House",
+    "hora": "09:00 PM - 03:00 AM",
+    "url_imagen": "https://images.ra.co/1ac8194dba2b9e1dcb58cd20406766320acfc496.jpg"
+  },
+  {
+    "disco": "La Terrazza",
+    "evento": "Hop on The Top pres: 2025 CLOSING PARTY (PART 2)",
+    "fecha": "VIE, 03 OCT",
+    "url_evento": "https://es.ra.co/events/2255031",
+    "generos": "Hip-Hop",
+    "hora": "07:00 PM - 11:59 PM",
+    "url_imagen": "https://images.ra.co/34e85fd6f4f3dfcf31435fa798c58d9546393e10.jpg"
+  },
+  {
+    "disco": "La Terrazza",
+    "evento": "Atlas Presenta Klasse Wrecks with Luca Lozano b2b Mr. Ho, Intruso & J Bronsted",
+    "fecha": "VIE, 03 OCT",
+    "url_evento": "https://es.ra.co/events/2257120",
+    "generos": "House, Electronica",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/cd00a3b7929a0e1049a18ae260b06542f2d5f352.jpg"
+  },
+  {
+    "disco": "La Terrazza",
+    "evento": "Jackies pres: Closing party with Dekmantel Soundsystem",
+    "fecha": "SÁB, 04 OCT",
+    "url_evento": "https://es.ra.co/events/2215294",
+    "generos": "House",
+    "hora": "07:00 PM - 11:59 PM",
+    "url_imagen": "https://images.ra.co/2d893ce7f5055c2405876568ba54e8330d2fd6db.jpg"
+  },
+  {
+    "disco": "La Terrazza",
+    "evento": "Moxie Meets Josh Caffé",
+    "fecha": "SÁB, 04 OCT",
+    "url_evento": "https://es.ra.co/events/2255195",
+    "generos": "House, Electronica",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/f291a670948c76df87769d108302a529b5aa4bd0.png"
+  },
+  {
+    "disco": "La Terrazza",
+    "evento": "Soundset Sessions with Bae Blade & Alycia Bezgo",
+    "fecha": "JUE, 09 OCT",
+    "url_evento": "https://es.ra.co/events/2237207",
+    "generos": "Trance, House",
+    "hora": "09:00 PM - 03:00 AM",
+    "url_imagen": "https://images.ra.co/1ac8194dba2b9e1dcb58cd20406766320acfc496.jpg"
+  },
+  {
+    "disco": "La Terrazza",
+    "evento": "Throwback - CLOSING PARTY - Back to 80',90' & 00'",
+    "fecha": "VIE, 10 OCT",
+    "url_evento": "https://es.ra.co/events/2245361",
+    "generos": "",
+    "hora": "07:00 PM - 11:59 PM",
+    "url_imagen": "https://images.ra.co/7131911b72e81bca017e0da481bc1426020126cc.jpg"
+  },
+  {
+    "disco": "La Terrazza",
+    "evento": "Happy Techno Barcelona - Open Air / Daytime w/ Darius Syrossian, Lexlay",
+    "fecha": "SÁB, 11 OCT",
+    "url_evento": "https://es.ra.co/events/2122319",
+    "generos": "Tech House, Electronica",
+    "hora": "07:00 PM - 11:59 PM",
+    "url_imagen": "https://images.ra.co/f12b9cdd1dd3c1cee322c38b2ef9564ae0d5badf.jpg"
+  },
+  {
+    "disco": "La Terrazza",
+    "evento": "Soundset Sessions with LAMMER",
+    "fecha": "JUE, 16 OCT",
+    "url_evento": "https://es.ra.co/events/2222524",
+    "generos": "Trance, House",
+    "hora": "09:00 PM - 03:00 AM",
+    "url_imagen": "https://images.ra.co/1ac8194dba2b9e1dcb58cd20406766320acfc496.jpg"
+  },
+  {
+    "disco": "La Terrazza",
+    "evento": "DROP Open-Air Closing party with Flash Ibiza: Flavour Trip, Guy Williams & Beniso",
+    "fecha": "SÁB, 18 OCT",
+    "url_evento": "https://es.ra.co/events/2181783",
+    "generos": "House",
+    "hora": "07:00 PM - 11:59 PM",
+    "url_imagen": "https://images.ra.co/7fa303d984ab9dc9a9429f449d1f998bf8872d9b.jpg"
+  },
+  {
+    "disco": "Razzmatazz",
+    "evento": "RAZZCLUB: Chuckie, Bclip, Rattlesnakke, Deva, Dj Sueño, GS.Elle, Elbarto",
+    "fecha": "VIE, 19 SEPT",
+    "url_evento": "https://es.ra.co/events/2244173",
+    "generos": "",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/0107a4898149d17816dba3a8e7304c710040c6d8.jpg"
+  },
+  {
+    "disco": "Razzmatazz",
+    "evento": "Pre-human 8BM: Curses, Dame Area, Death Disco, Parrish Smith, Schwefelgelb, Terence Fixmer",
+    "fecha": "SÁB, 20 SEPT",
+    "url_evento": "https://es.ra.co/events/2173648",
+    "generos": "EBM, Post-Punk",
+    "hora": "08:30 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/c99e9c5e7dc9dd7fa4f3255a4f3b898dc2c68315.jpg"
+  },
+  {
+    "disco": "Razzmatazz",
+    "evento": "RAZZCLUB: Alvva, Downites, Pekodjinn, Sushinigami, Kanti, AndrAia, Rivers Z",
+    "fecha": "SÁB, 20 SEPT",
+    "url_evento": "https://es.ra.co/events/2244176",
+    "generos": "",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/fea0805398c6f5a78d7a8c001ef805a31c268238.jpg"
+  },
+  {
+    "disco": "Razzmatazz",
+    "evento": "RAZZCLUB: Cromo X, Bclip, Ivicore, MDA Live, Laze, MUCK, A For Alpha",
+    "fecha": "VIE, 26 SEPT",
+    "url_evento": "https://es.ra.co/events/2244179",
+    "generos": "",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/e230d5abe475f04ce61f70974ee0a6016945b342.jpg"
+  },
+  {
+    "disco": "Razzmatazz",
+    "evento": "RAZZCLUB: Ben Sims, Ghoulish, Dis Fig, Carrier, Ultralone",
+    "fecha": "SÁB, 27 SEPT",
+    "url_evento": "https://es.ra.co/events/2244180",
+    "generos": "",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/769cc3f23ea4114b3fc7c92a7b28ad502ee309a7.jpg"
+  },
+  {
+    "disco": "Razzmatazz",
+    "evento": "Mala Junta x MUSA: Gabrielle Kwarteng, DJ TOOL, Hyperaktivist, Yazzus, SANTANA b2b SITSOPE",
+    "fecha": "SÁB, 04 OCT",
+    "url_evento": "https://es.ra.co/events/2239807",
+    "generos": "",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/1bbba7225d63e11971dcb0eadc6c4f3149b28513.jpg"
+  },
+  {
+    "disco": "Razzmatazz",
+    "evento": "TORAX: Surgeon, Nastia Reigel, Sylvia, Matriark, Carolina",
+    "fecha": "DOM, 05 OCT",
+    "url_evento": "https://es.ra.co/events/2222087",
+    "generos": "Trance, Techno",
+    "hora": "05:00 PM - 01:00 AM",
+    "url_imagen": "https://images.ra.co/0a9873d3baac81352980b45ea3916c7a7d0f8d7b.jpg"
+  },
+  {
+    "disco": "Razzmatazz",
+    "evento": "BUNT",
+    "fecha": "MIÉ, 29 OCT",
+    "url_evento": "https://es.ra.co/events/2165486",
+    "generos": "House",
+    "hora": "08:00 PM - 11:00 PM",
+    "url_imagen": "https://images.ra.co/7e5915f2b8b2f0e72ca42a0f82e6be24421b9dc1.jpg"
+  },
+  {
+    "disco": "Razzmatazz",
+    "evento": "Jan Blomqvist",
+    "fecha": "JUE, 13 NOV",
+    "url_evento": "https://es.ra.co/events/2215379",
+    "generos": "Tech House, Minimal",
+    "hora": "08:00 PM - 11:00 PM",
+    "url_imagen": "https://images.ra.co/648d1ff612749ea6bf99c8d2b68a1cb716689803.jpg"
+  },
+  {
+    "disco": "Razzmatazz",
+    "evento": "TORAX: Sandwell District (4-hour set), DJohnston, Kenya Arakama, acidheaven, Verushka",
+    "fecha": "DOM, 16 NOV",
+    "url_evento": "https://es.ra.co/events/2222095",
+    "generos": "Techno, House",
+    "hora": "05:00 PM - 01:00 AM",
+    "url_imagen": "https://images.ra.co/a2a01077ccd3d4a7e956a7f8ad1341da0c91acd4.jpg"
+  },
+  {
+    "disco": "Nitsa",
+    "evento": "Yung Prado All Night Long / Dengue Dengue Dengue Live · Phran b2b oma totem · Chica Acosta",
+    "fecha": "VIE, 19 SEPT",
+    "url_evento": "https://es.ra.co/events/2231881",
+    "generos": "Techno, House",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/f379eae815946875fde15b93573b2155e919c8bb.png"
+  },
+  {
+    "disco": "Nitsa",
+    "evento": "Apollonia All Night Long / Club Romantico: Florentino b2b Meritxell De Soto · Simo Cell",
+    "fecha": "SÁB, 20 SEPT",
+    "url_evento": "https://es.ra.co/events/2231360",
+    "generos": "House, Latin Bass",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/e2803dbc699dd0d11e6e6d900efbf15f16fe601c.jpg"
+  },
+  {
+    "disco": "Nitsa",
+    "evento": "Funk Tribu · HEDDA · Jhort / DROP: Dan Shake · Toni Aparisi · Beniso",
+    "fecha": "VIE, 26 SEPT",
+    "url_evento": "https://es.ra.co/events/2245277",
+    "generos": "Trance, House",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/1466fd9ce4a9679d2839b08f2a6e3c78732d4cf5.jpg"
+  },
+  {
+    "disco": "Nitsa",
+    "evento": "Carl Craig · Dj Fra / Natural Mind: Ecco2k DJ Set · Mechatok · Special Guest · Julietta Ferrari",
+    "fecha": "SÁB, 27 SEPT",
+    "url_evento": "https://es.ra.co/events/2245278",
+    "generos": "Techno, Hip-Hop",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/17dc6b7ece7319008a7d8da24c42ff13ebc07e1b.jpg"
+  },
+  {
+    "disco": "Nitsa",
+    "evento": "Somoslas: The Blessed Madonna",
+    "fecha": "VIE, 03 OCT",
+    "url_evento": "https://es.ra.co/events/2251702",
+    "generos": "House, Pop",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/13fa8cb14bab29b5a626efcd7e043521327f9261.jpg"
+  },
+  {
+    "disco": "Nitsa",
+    "evento": "Modeselektor DJ-Kicks Tour",
+    "fecha": "SÁB, 18 OCT",
+    "url_evento": "https://es.ra.co/events/2215396",
+    "generos": "Techno, IDM",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/3f54abf6e3d24b07cf7499917ae0dcbcf5762b37.png"
+  },
+  {
+    "disco": "Nitsa",
+    "evento": "Curve Club +1: Mura Masa DJ Set",
+    "fecha": "VIE, 24 OCT",
+    "url_evento": "https://es.ra.co/events/2252721",
+    "generos": "Bass, Pop",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/d488a32edb45ab3e5b8f2160ecb35e8646123397.jpg"
+  },
+  {
+    "disco": "Nitsa",
+    "evento": "Agents Of Time 3-Hour Set",
+    "fecha": "SÁB, 25 OCT",
+    "url_evento": "https://es.ra.co/events/2260461",
+    "generos": "Progressive House, Tech House",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/b25bf44c034cfcb5a83ba865c1c82f75aa9c6f1a.jpg"
+  },
+  {
+    "disco": "Nitsa",
+    "evento": "¥ØU$UK€ ¥UK1MAT$U",
+    "fecha": "VIE, 31 OCT",
+    "url_evento": "https://es.ra.co/events/2232665",
+    "generos": "Techno, Gabber",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/53d145fcbfcbfb36c6906fa896c6b0644fbc091c.jpg"
+  },
+  {
+    "disco": "Nitsa",
+    "evento": "Girls Don't Sync presents Fourmation: Code Orange Tour",
+    "fecha": "VIE, 07 NOV",
+    "url_evento": "https://es.ra.co/events/2257795",
+    "generos": "Garage, Dancehall",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/e42a9aef976e3cb82806345bbf0d130d6b56108d.jpg"
+  },
+  {
+    "disco": "Moog",
+    "evento": "MOTA (ANALOG LOVE)",
+    "fecha": "MIÉ, 17 SEPT",
+    "url_evento": "https://es.ra.co/events/2229443",
+    "generos": "Techno",
+    "hora": "11:59 PM - 05:00 AM",
+    "url_imagen": "https://images.ra.co/577eed4324bbdb7914f01c28fae407438737fa7b.png"
+  },
+  {
+    "disco": "Moog",
+    "evento": "carlota",
+    "fecha": "JUE, 18 SEPT",
+    "url_evento": "https://es.ra.co/events/2229446",
+    "generos": "Techno",
+    "hora": "11:59 PM - 05:00 AM",
+    "url_imagen": "https://images.ra.co/b0eb1d4ae7e4fb12757a12a8689384c96e6c02da.png"
+  },
+  {
+    "disco": "Moog",
+    "evento": "MOTA (All Night Long)",
+    "fecha": "VIE, 19 SEPT",
+    "url_evento": "https://es.ra.co/events/2229450",
+    "generos": "Techno",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/43a1d4f7bf0a2e93f6938978c5e597691e99079c.png"
+  },
+  {
+    "disco": "Moog",
+    "evento": "Bass Warp + Javi gOn",
+    "fecha": "SÁB, 20 SEPT",
+    "url_evento": "https://es.ra.co/events/2229493",
+    "generos": "Techno",
+    "hora": "11:00 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/3fff4f596761e985a79647fe1e4cdae05c41ce11.png"
+  },
+  {
+    "disco": "Moog",
+    "evento": "CAROL NYX",
+    "fecha": "DOM, 21 SEPT",
+    "url_evento": "https://es.ra.co/events/2229494",
+    "generos": "Techno",
+    "hora": "11:59 PM - 05:00 AM",
+    "url_imagen": "https://images.ra.co/0d76aa8274b71391b6ef13e5d9f4e5d9cf05a97c.png"
+  },
+  {
+    "disco": "Moog",
+    "evento": "Javi gOn (All Night Long)",
+    "fecha": "LUN, 22 SEPT",
+    "url_evento": "https://es.ra.co/events/2229499",
+    "generos": "Techno",
+    "hora": "11:59 PM - 05:00 AM",
+    "url_imagen": "https://images.ra.co/e7c3f5e7f429570132802222b7dd0f707028fbff.png"
+  },
+  {
+    "disco": "Moog",
+    "evento": "Rubén Seoane (All Night Long)",
+    "fecha": "MAR, 23 SEPT",
+    "url_evento": "https://es.ra.co/events/2229514",
+    "generos": "Techno",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/2914ef1db2c1932e69adf2632723f294e1027410.png"
+  },
+  {
+    "disco": "Moog",
+    "evento": "MEN (All Night Long)",
+    "fecha": "MIÉ, 24 SEPT",
+    "url_evento": "https://es.ra.co/events/2229515",
+    "generos": "Techno",
+    "hora": "11:59 PM - 05:00 AM",
+    "url_imagen": "https://images.ra.co/e67568da37292b35514144fc36b745494643eb18.png"
+  },
+  {
+    "disco": "Moog",
+    "evento": "BAMBI",
+    "fecha": "JUE, 25 SEPT",
+    "url_evento": "https://es.ra.co/events/2229519",
+    "generos": "Techno",
+    "hora": "11:59 PM - 05:00 AM",
+    "url_imagen": "https://images.ra.co/68faafc2643601af15180269e775f57127e06ea1.png"
+  },
+  {
+    "disco": "Moog",
+    "evento": "PAULA ZAPY + MOTA",
+    "fecha": "VIE, 26 SEPT",
+    "url_evento": "https://es.ra.co/events/2229520",
+    "generos": "Techno",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/9e6d8791f2962992e2611d7520f4df11b15a6fbd.png"
+  },
+  {
+    "disco": "Moog",
+    "evento": "Javi gOn (All Night Long)",
+    "fecha": "SÁB, 27 SEPT",
+    "url_evento": "https://es.ra.co/events/2229523",
+    "generos": "Techno",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/f8d80aafdaa32eaebda2b4760b51c3469e0d8f1a.png"
+  },
+  {
+    "disco": "Moog",
+    "evento": "NHYMPH + Carol Nyx",
+    "fecha": "DOM, 28 SEPT",
+    "url_evento": "https://es.ra.co/events/2229527",
+    "generos": "Techno",
+    "hora": "11:59 PM - 05:00 AM",
+    "url_imagen": "https://images.ra.co/91c1932e413aeefb74630475159ea1433b073342.png"
+  },
+  {
+    "disco": "Moog",
+    "evento": "Javi gOn (All Night Long)",
+    "fecha": "LUN, 29 SEPT",
+    "url_evento": "https://es.ra.co/events/2229529",
+    "generos": "Techno",
+    "hora": "11:59 PM - 05:00 AM",
+    "url_imagen": "https://images.ra.co/7540638e544fe3423c37532a5d7cf16a8255fb3c.png"
+  },
+  {
+    "disco": "Moog",
+    "evento": "Rubén Seoane (All Night Long)",
+    "fecha": "MAR, 30 SEPT",
+    "url_evento": "https://es.ra.co/events/2229533",
+    "generos": "Techno",
+    "hora": "11:59 PM - 05:00 AM",
+    "url_imagen": "https://images.ra.co/2273c89bb3ffb6b7770804c46a0ca54cd66faf4d.png"
+  },
+  {
+    "disco": "Moog",
+    "evento": "MEN (All Night Long)",
+    "fecha": "MIÉ, 01 OCT",
+    "url_evento": "https://es.ra.co/events/2249313",
+    "generos": "Techno",
+    "hora": "11:59 PM - 05:00 AM",
+    "url_imagen": "https://images.ra.co/7ce45ab9973d3853c560a785dd212193804f5980.png"
+  },
+  {
+    "disco": "Moog",
+    "evento": "Lzztto",
+    "fecha": "JUE, 02 OCT",
+    "url_evento": "https://es.ra.co/events/2249315",
+    "generos": "Techno",
+    "hora": "11:59 PM - 05:00 AM",
+    "url_imagen": "https://images.ra.co/682f802af6af3532b1dd3c7ef3a7c961945ea349.png"
+  },
+  {
+    "disco": "Moog",
+    "evento": "MOTA (All Night Long)",
+    "fecha": "VIE, 03 OCT",
+    "url_evento": "https://es.ra.co/events/2249319",
+    "generos": "Techno",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/6c13fa27e0cd05d8084f39b0c147e7e0b7a4988d.png"
+  },
+  {
+    "disco": "Moog",
+    "evento": "Javi gOn (All Night Long)",
+    "fecha": "SÁB, 04 OCT",
+    "url_evento": "https://es.ra.co/events/2249325",
+    "generos": "Techno",
+    "hora": "11:59 PM - 06:00 AM",
+    "url_imagen": "https://images.ra.co/aa79c6be9d2a9cdbbf7d6492b2ad80e13e253e21.png"
+  },
+  {
+    "disco": "Moog",
+    "evento": "CAROL NYX",
+    "fecha": "DOM, 05 OCT",
+    "url_evento": "https://es.ra.co/events/2249326",
+    "generos": "Techno",
+    "hora": "11:59 PM - 05:00 AM",
+    "url_imagen": "https://images.ra.co/898ad55eb69e85e69a1916e34754830a08d0ef2c.png"
+  },
+  {
+    "disco": "Moog",
+    "evento": "BAMBI",
+    "fecha": "LUN, 06 OCT",
+    "url_evento": "https://es.ra.co/events/2249327",
+    "generos": "Techno",
+    "hora": "11:59 PM - 05:00 AM",
+    "url_imagen": "https://images.ra.co/b6705f64dad28348f5641c75b41153cc773a64d9.png"
+  },
+  {
+    "disco": "Noxe",
+    "evento": "FREE GUEST LIST *Housy at Noxe (26th floor W Barcelona)",
+    "fecha": "MIÉ, 17 SEPT",
+    "url_evento": "https://es.ra.co/events/2238215",
+    "generos": "House",
+    "hora": "11:00 PM - 02:00 AM",
+    "url_imagen": "https://images.ra.co/c310ab40be823440aa1117f2b875ab1c3377cff7.jpg"
+  },
+  {
+    "disco": "Noxe",
+    "evento": "FREE GUST LIST * HOPE at Noxe (26th floor W Barcelona)",
+    "fecha": "JUE, 18 SEPT",
+    "url_evento": "https://es.ra.co/events/2238231",
+    "generos": "House",
+    "hora": "11:00 PM - 02:00 AM",
+    "url_imagen": "https://images.ra.co/2f218c3f02342e6745bc30363826b6abb73ba1df.jpg"
+  },
+  {
+    "disco": "Noxe",
+    "evento": "Skylab at Noxe (26th floor W Barcelona)",
+    "fecha": "LUN, 22 SEPT",
+    "url_evento": "https://es.ra.co/events/2216868",
+    "generos": "House",
+    "hora": "09:00 PM - 02:00 AM",
+    "url_imagen": "https://images.ra.co/9f421417f81a853907f85d36c5a8cb09cd1f0f14.png"
+  },
+  {
+    "disco": "Noxe",
+    "evento": "FREE GUEST LIST * Moods at Noxe (26th floor W Barcelona)",
+    "fecha": "MAR, 23 SEPT",
+    "url_evento": "https://es.ra.co/events/2238207",
+    "generos": "House, Electronica",
+    "hora": "11:00 PM - 02:00 AM",
+    "url_imagen": "https://images.ra.co/8b033c32ebfc5a9844bdd991ccbffe14a90a09c3.jpg"
+  },
+  {
+    "disco": "Noxe",
+    "evento": "FREE GUEST LIST * Housy at Noxe (26th floor W Barcelona)",
+    "fecha": "MIÉ, 24 SEPT",
+    "url_evento": "https://es.ra.co/events/2238217",
+    "generos": "House",
+    "hora": "11:00 PM - 02:00 AM",
+    "url_imagen": "https://images.ra.co/c310ab40be823440aa1117f2b875ab1c3377cff7.jpg"
+  },
+  {
+    "disco": "Noxe",
+    "evento": "FREE GUEST LIST * HOPE at Noxe (26th floor W Barcelona)",
+    "fecha": "JUE, 25 SEPT",
+    "url_evento": "https://es.ra.co/events/2238233",
+    "generos": "House",
+    "hora": "11:00 PM - 02:00 AM",
+    "url_imagen": "https://images.ra.co/2f218c3f02342e6745bc30363826b6abb73ba1df.jpg"
+  },
+  {
+    "disco": "Noxe",
+    "evento": "Skylab at Noxe (26th floor W Barcelona)",
+    "fecha": "LUN, 29 SEPT",
+    "url_evento": "https://es.ra.co/events/2216871",
+    "generos": "House",
+    "hora": "09:00 PM - 02:00 AM",
+    "url_imagen": "https://images.ra.co/798a2891aff870c89fecdb8a1e504dd338999420.png"
+  },
+  {
+    "disco": "Noxe",
+    "evento": "FREE GUEST LIST * Moods at Noxe (26th floor W Barcelona)",
+    "fecha": "MAR, 30 SEPT",
+    "url_evento": "https://es.ra.co/events/2238208",
+    "generos": "House, Electronica",
+    "hora": "11:00 PM - 02:00 AM",
+    "url_imagen": "https://images.ra.co/8b033c32ebfc5a9844bdd991ccbffe14a90a09c3.jpg"
+  }
+]
