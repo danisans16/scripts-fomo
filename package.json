@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "node-fetch": "^3.3.2",
+    "playwright": "^1.55.1",
+    "playwright-extra": "^4.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
+  }
+}
