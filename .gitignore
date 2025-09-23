@@ -18,6 +18,8 @@ dist/
 build/
 .cache/
 
+ra.json
+
 # Sistema
 .DS_Store
 Thumbs.db
