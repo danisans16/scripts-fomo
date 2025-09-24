@@ -1,3 +1,4 @@
+# pip install botasaurus beautifulsoup4 unidecode
 import os, re, json, time, random, sys, math
 from datetime import datetime
 from typing import List, Dict, Any
@@ -7,8 +8,7 @@ from botasaurus.soupify import soupify
 
 # ========= Config =========
 CLUB_IDS = [911, 150612, 195409, 3818, 3760, 60710, 2072, 2253, 216950]
-
-MAX_EVENTS_PER_CLUB = 100
+MAX_EVENTS_PER_CLUB = 50
 HEADLESS = False  # pon True cuando esté estable
 
 CLUB_NAMES = {
@@ -33,16 +33,8 @@ def sleep_jitter(ms_min=500, ms_max=900):
 WEEK = ["LUN", "MAR", "MIÉ", "JUE", "VIE", "SÁB", "DOM"]
 MONTH = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEPT", "OCT", "NOV", "DIC"]
 
-def fmt_fecha_label(dt_iso: str) -> str:
-    if not dt_iso: return ""
-    try:
-        dt = datetime.fromisoformat(dt_iso.replace("Z","").split(".")[0])
-        return f"{WEEK[dt.weekday()]}, {dt.day:02d} {MONTH[dt.month-1]}"
-    except Exception:
-        return ""
-
 def fmt_date_spanish(dt_iso: str) -> str:
-    # Para el JSON de precios (estilo "MIÉ. 24 SEP.")
+    # "MIÉ. 24 SEP."
     WEEK2 = ["LUN.", "MAR.", "MIÉ.", "JUE.", "VIE.", "SÁB.", "DOM."]
     MONTH2 = ["ENE.", "FEB.", "MAR.", "ABR.", "MAY.", "JUN.", "JUL.", "AGO.", "SEP.", "OCT.", "NOV.", "DIC."]
     if not dt_iso: return ""
@@ -52,18 +44,8 @@ def fmt_date_spanish(dt_iso: str) -> str:
     except Exception:
         return ""
 
-def fmt_hora_label(start_iso: str, end_iso: str) -> str:
-    def clock(x):
-        return datetime.fromisoformat(x.replace("Z","").split(".")[0]).strftime("%I:%M %p")
-    try:
-        if start_iso and end_iso:
-            return f"{clock(start_iso)} - {clock(end_iso)}"
-        return clock(start_iso) if start_iso else ""
-    except Exception:
-        return ""
-
 def fmt_time_range(start_iso: str, end_iso: str) -> str:
-    # Para el JSON de precios (24h "HH:MM HH:MM")
+    # "HH:MM HH:MM" en 24h
     try:
         if not start_iso: return ""
         s = datetime.fromisoformat(start_iso.replace("Z","").split(".")[0]).strftime("%H:%M")
@@ -163,44 +145,22 @@ def pick_current_release(tickets_norm: List[Dict[str, Any]]) -> str:
     valid.sort(key=lambda t: (t.get("price") is None, t.get("price")))
     return valid[0].get("title") or ""
 
-# ========= Construcción de salidas =========
-def build_event_card(club_name: str, event_url: str, soup, page_html: str) -> Dict[str, Any]:
-    j = extract_jsonld(soup)
-    title = j.get("name") or (soup.select_one("h1").get_text(strip=True) if soup.select_one("h1") else "")
-    start = j.get("startDate", "")
-    end   = j.get("endDate", "")
-    image = ""
-    if isinstance(j.get("image"), list) and j["image"]:
-        image = j["image"][0]
-    if not image:
-        image = extract_og_image(soup)
-    generos = extract_genres_from_html(soup)
-
-    return {
-        "disco": club_name,
-        "evento": title or "",
-        "fecha": fmt_fecha_label(start),
-        "url_evento": event_url,
-        "generos": generos,
-        "hora": fmt_hora_label(start, end),
-        "url_imagen": image or ""
-    }, j  # devolvemos también el JSON-LD para el precio JSON
-
-def build_price_entry(event_url: str, meta: Dict[str, Any], page_html: str) -> Dict[str, Any]:
-    # tickets
+# ========= Construcción de la entrada final (precios + generos) =========
+def build_price_row(event_url: str, page_html: str, meta: Dict[str, Any], generos: str) -> Dict[str, Any]:
+    # Tickets desde los <script> del HTML
     tickets_raw = []
     for sc in find_script_blocks(page_html):
         tickets_raw.extend(extract_ticket_objects(sc))
     tickets_norm = [{
         "title": t.get("title"),
         "price": t.get("priceRetail"),
-        "status": t.get("validType"),
+        "status": t.get("validType"),         # p.ej., VALID, SOLDOUT, NOLONGERONSALE
         "isAddOn": t.get("isAddOn", False),
-        "url": t.get("url") or ""  # RA no suele exponerla; quedará vacío
+        "url": t.get("url") or ""             # normalmente vacío
     } for t in tickets_raw]
     tickets_norm.sort(key=lambda x: (x.get("price") is None, x.get("price") if x.get("price") is not None else math.inf))
 
-    # meta
+    # Meta
     venue_name = ""
     loc = meta.get("location") if isinstance(meta, dict) else None
     if isinstance(loc, dict):
@@ -211,7 +171,11 @@ def build_price_entry(event_url: str, meta: Dict[str, Any], page_html: str) -> D
     image = ""
     if isinstance(meta.get("image"), list) and meta["image"]:
         image = meta["image"][0]
+    if not image:
+        # fallback: intentar og:image (si necesitas, podrías pasar también soup)
+        pass
 
+    # Base
     out = {
         "venue": slugify(venue_name) if venue_name else "",
         "eventName": event_name or "",
@@ -221,13 +185,19 @@ def build_price_entry(event_url: str, meta: Dict[str, Any], page_html: str) -> D
         "imageUrl": image or "",
         "currentRelease": pick_current_release(tickets_norm),
         "event_date": (start or "")[:10],
+        "generos": generos or "",     # <- añadido
     }
 
-    # Relleno 1..6: si la release existe, releaseUrl = t.url or event_url; si no existe, todo vacío
+    # Releases 1..6 (si existe → url = release.url o event_url; si no existe → campos vacíos)
     for i in range(6):
         if i < len(tickets_norm):
             t = tickets_norm[i]
-            out[f"releaseName{i+1}"] = t.get("title") or ""
+            # etiqueta "Agotado" si status indica sold out / no disponible
+            title = (t.get("title") or "").strip()
+            status = (t.get("status") or "").upper()
+            if status in ("SOLDOUT", "NOLONGERONSALE"):
+                title = f"{title} - Agotado"
+            out[f"releaseName{i+1}"] = title
             out[f"price{i+1}"] = fmt_price_eur(t.get("price"))
             out[f"releaseUrl{i+1}"] = (t.get("url") or event_url)
         else:
@@ -235,7 +205,6 @@ def build_price_entry(event_url: str, meta: Dict[str, Any], page_html: str) -> D
             out[f"price{i+1}"] = ""
             out[f"releaseUrl{i+1}"] = ""
     return out
-
 
 def looks_like_verification(html: str) -> bool:
     h = (html or "").lower()
@@ -271,17 +240,16 @@ def scrape_club(driver: Driver, data: dict):
     html = driver.page_html
     if looks_like_verification(html):
         log(f"[BLOQUEO] Verificación en club {club_id}")
-        return {"club_id": club_id, "events": [], "prices": [], "error": "verification"}
+        return {"club_id": club_id, "rows": [], "error": "verification"}
 
     ids = extract_event_ids_from_club_html(html)
     if not ids:
         log(f"[WARN] No se encontraron eventIds en club {club_id}.")
-        return {"club_id": club_id, "events": [], "prices": []}
+        return {"club_id": club_id, "rows": []}
 
     log(f"[INFO] Club {club_id} ({club_name}) → {len(ids)} eventIds (hasta {max_events})")
 
-    events_out: List[Dict[str, Any]] = []
-    prices_out: List[Dict[str, Any]] = []
+    rows_out: List[Dict[str, Any]] = []
 
     # 2) Eventos
     for ev_id in ids[:max_events]:
@@ -290,17 +258,16 @@ def scrape_club(driver: Driver, data: dict):
             driver.get(event_url)
             driver.short_random_sleep()
 
-            # parsear
+            # Espera breve: JSON-LD + géneros
             for attempt in range(5):
                 page_html = driver.page_html
                 soup = soupify(driver)
-                # tarjeta evento + JSON-LD para precios
-                card, meta = build_event_card(club_name, event_url, soup, page_html)
-                if card["evento"] or meta.get("startDate") or meta.get("endDate"):
-                    events_out.append(card)
-                    # entrada de precios en archivo separado
-                    prices_out.append(build_price_entry(event_url, meta, page_html))
-                    log(f"[OK] {ev_id} → '{card['evento']}'")
+                meta = extract_jsonld(soup)
+                # géneros desde el DOM
+                generos = extract_genres_from_html(soup)
+                if meta.get("name") or meta.get("startDate") or meta.get("endDate"):
+                    rows_out.append(build_price_row(event_url, page_html, meta, generos))
+                    log(f"[OK] {ev_id} → '{meta.get('name','') or ''}'")
                     break
                 time.sleep(0.5 + random.random()*0.6)
 
@@ -311,61 +278,43 @@ def scrape_club(driver: Driver, data: dict):
             sleep_jitter(900, 1400)
             continue
 
-    log(f"[DONE] Club {club_id}: eventos {len(events_out)}, precios {len(prices_out)}")
-    return {"club_id": club_id, "events": events_out, "prices": prices_out}
+    log(f"[DONE] Club {club_id}: filas generadas {len(rows_out)}")
+    return {"club_id": club_id, "rows": rows_out}
 
 # ========= Orquestador multi-club =========
-def run_all_clubs(club_ids: List[int], max_events_per_club: int):
-    all_events: List[Dict[str, Any]] = []
-    all_prices: List[Dict[str, Any]] = []
-    seen_event_urls = set()  # dedup global por url_evento
+def run_all_clubs(club_ids: List[int], max_events_per_club: int) -> List[Dict[str, Any]]:
+    all_rows: List[Dict[str, Any]] = []
+    seen_urls = set()  # dedup por URL del evento
 
     for cid in club_ids:
         res = scrape_club({"club_id": cid, "max_events": max_events_per_club})
 
-        chunks_events, chunks_prices = [], []
-        if isinstance(res, dict):
-            chunks_events = res.get("events", [])
-            chunks_prices = res.get("prices", [])
+        chunks = []
+        if isinstance(res, dict) and "rows" in res:
+            chunks = res["rows"]
         elif isinstance(res, list):
             for item in res:
-                if isinstance(item, dict):
-                    chunks_events.extend(item.get("events", []))
-                    chunks_prices.extend(item.get("prices", []))
+                if isinstance(item, dict) and "rows" in item:
+                    chunks.extend(item["rows"])
 
-        # merge con dedup por url_evento / url
-        added_e, added_p = 0, 0
-        # Eventos
-        for ev in chunks_events:
-            url = ev.get("url_evento")
-            if url and url not in seen_event_urls:
-                seen_event_urls.add(url)
-                all_events.append(ev)
-                added_e += 1
-        # Precios (alineados por url)
-        for pr in chunks_prices:
-            url = pr.get("url")
-            if url and url in seen_event_urls:
-                all_prices.append(pr)
-                added_p += 1
+        added = 0
+        for row in chunks:
+            url = row.get("url")
+            if url and url not in seen_urls:
+                seen_urls.add(url)
+                all_rows.append(row)
+                added += 1
 
-        log(f"[MERGE] Club {cid}: +{added_e} eventos, +{added_p} precios → totales: {len(all_events)} / {len(all_prices)}")
+        log(f"[MERGE] Club {cid}: +{added} filas → total {len(all_rows)}")
         sleep_jitter(1200, 1800)
 
-    return all_events, all_prices
+    return all_rows
 
 # ========= Main =========
 if __name__ == "__main__":
-    events, prices = run_all_clubs(CLUB_IDS, MAX_EVENTS_PER_CLUB)
+    rows = run_all_clubs(CLUB_IDS, MAX_EVENTS_PER_CLUB)
     os.makedirs("output", exist_ok=True)
-
-    events_path = "output/ra_all_events.json"
-    with open(events_path, "w", encoding="utf-8") as f:
-        json.dump(events, f, ensure_ascii=False, indent=2)
-
-    prices_path = "output/ra_prices.json"
-    with open(prices_path, "w", encoding="utf-8") as f:
-        json.dump(prices, f, ensure_ascii=False, indent=2)
-
-    print(f"\n✅ Guardados {len(events)} eventos en {events_path}")
-    print(f"✅ Guardados {len(prices)} bloques de precios en {prices_path}")
+    out_path = "output/ra_all.json"  # <- nombre que pediste
+    with open(out_path, "w", encoding="utf-8") as f:
+        json.dump(rows, f, ensure_ascii=False, indent=2)
+    print(f"\nGuardadas {len(rows)} filas en {out_path}")
