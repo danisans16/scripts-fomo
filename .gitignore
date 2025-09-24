@@ -1,5 +1,6 @@
 # Dependencias
 node_modules/
+package-lock.json
 yarn.lock
 pnpm-lock.yaml
 
@@ -12,14 +13,15 @@ yarn-error.log*
 .env
 .env.local
 .env.*.local
-
+venv/
+error_logs/
 # Directorios de build
 dist/
 build/
 .cache/
 
 ra.json
-
+output/
 # Sistema
 .DS_Store
 Thumbs.db
