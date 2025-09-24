@@ -33,7 +33,7 @@ chromium.use(StealthPlugin());
           const dateEl = card.querySelector('span[data-test-id="event-listing-heading"], span.Text-sc-wks9sf-0.loAMdA');
           const linkEl = card.querySelector('a[data-pw-test-id="event-title-link"]');
 
-          // Script 1: <img> clásico
+          // Script 1: <img> clï¿½sico
           let imgSrcs = [];
           const imgEl = card.querySelector('a[data-pw-test-id="event-image-link"] img');
           if (imgEl) imgSrcs.push(imgEl.getAttribute('src'));

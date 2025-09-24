@@ -1,8 +1,7 @@
-// ra_scraper_combined_with_club_event.js
 const { chromium } = require('playwright-extra');
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
-const fs = require('fs');
+const fs = require('fs');
 
 chromium.use(StealthPlugin());
 
