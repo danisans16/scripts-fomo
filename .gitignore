@@ -15,6 +15,7 @@ yarn-error.log*
 .env.*.local
 venv/
 error_logs/
+venv-wsl/
 # Directorios de build
 dist/
 build/

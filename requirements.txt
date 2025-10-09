@@ -1,3 +1,5 @@
 botasaurus
 beautifulsoup4
 Unidecode
+fake-useragent
+requests
