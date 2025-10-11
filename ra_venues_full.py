@@ -450,8 +450,8 @@ if __name__ == "__main__":
         print()  # Separador entre venues
 
     import os
-    os.makedirs("output", exist_ok=True)
-    out_path = "output/ra_venues_events.json"
+    # os.makedirs("output", exist_ok=True)
+    out_path = "ra_venues_events.json"
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(all_rows, f, ensure_ascii=False, indent=2)
     print(f"\n✅ Guardadas {len(all_rows)} filas en {out_path}")
