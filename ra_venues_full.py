@@ -119,6 +119,64 @@ query GET_VENUE_MOREON($id: ID!, $excludeEventId: ID = 0) {
 }
 """.strip()
 
+# GraphQL query para obtener géneros de un evento específico
+GQL_EVENT_GENRES = """
+query GET_EVENT_GENRES($id: ID!) {
+  event(id: $id) {
+    id
+    title
+    genres {
+      name
+    }
+    venue {
+      id
+      name
+    }
+    startTime
+    endTime
+  }
+}
+""".strip()
+
+def gql_get_event_genres(session, event_id):
+    """Obtener géneros y tiempos de un evento específico usando GraphQL"""
+    headers = {
+        "User-Agent": session.headers.get("User-Agent", ua()),
+        "Accept": "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+        "Origin": BASE,
+        "Referer": f"{BASE}/events/{event_id}",
+    }
+    payload = {
+        "operationName": "GET_EVENT_GENRES",
+        "variables": {"id": str(event_id)},
+        "query": GQL_EVENT_GENRES,
+    }
+    
+    try:
+        r = session.post(GQL, headers=headers, json=payload, timeout=15)
+        if r.status_code == 200:
+            response_data = r.json()
+            event_data = response_data.get("data", {}).get("event", {})
+            if event_data:
+                genres = event_data.get("genres", [])
+                genre_names = [g.get("name", "") for g in genres if g.get("name")]
+                genres_str = ", ".join(genre_names) if genre_names else ""
+                
+                # Extraer startTime y endTime
+                start_time = event_data.get("startTime", "")
+                end_time = event_data.get("endTime", "")
+                
+                return {
+                    "genres": genres_str,
+                    "startTime": start_time,
+                    "endTime": end_time
+                }
+        return {"genres": "", "startTime": "", "endTime": ""}
+    except Exception as e:
+        print(f"[ERROR] GraphQL genres failed for {event_id}: {e}")
+        return {"genres": "", "startTime": "", "endTime": ""}
+
 def gql_get_events(session, venue_id, date_from=None, date_to=None, count=200):
     headers = {
         "User-Agent": session.headers.get("User-Agent", ua()),
@@ -162,60 +220,6 @@ def gql_get_events(session, venue_id, date_from=None, date_to=None, count=200):
     # Si no hay filtro de fechas, devolver todos los eventos
     return events
 
-# =================== Fallback con curl/HTML ===================
-def get_event_html_fallback(session, event_id):
-    """Fallback: obtener HTML de la página del evento si la API falla"""
-    url = f"{BASE}/events/{event_id}"
-    try:
-        r = session.get(url, headers={"User-Agent": ua()}, timeout=20)
-        if r.status_code == 200:
-            return r.text
-    except Exception as e:
-        print(f"[ERROR] Fallback HTML failed for {event_id}: {e}")
-    return None
-
-def parse_event_from_html(html, event_id):
-    """Parsear información básica del evento desde HTML"""
-    if not html:
-        return None
-    
-    soup = BeautifulSoup(html, "html.parser")
-    
-    # Extraer información básica del HTML
-    title = ""
-    venue_name = ""
-    date_str = ""
-    image_url = ""
-    
-    # Título del evento
-    title_el = soup.select_one("h1, .event-title, [data-testid='event-title']")
-    if title_el:
-        title = title_el.get_text(strip=True)
-    
-    # Venue
-    venue_el = soup.select_one(".venue-name, [data-testid='venue-name'], .event-venue")
-    if venue_el:
-        venue_name = venue_el.get_text(strip=True)
-    
-    # Fecha
-    date_el = soup.select_one(".event-date, [data-testid='event-date'], .date")
-    if date_el:
-        date_str = date_el.get_text(strip=True)
-    
-    # Imagen
-    img_el = soup.select_one(".event-image img, .flyer img, [data-testid='event-image']")
-    if img_el and img_el.get("src"):
-        image_url = img_el["src"]
-    
-    return {
-        "id": event_id,
-        "title": title,
-        "venue": {"name": venue_name, "id": ""},
-        "date": date_str,
-        "contentUrl": f"{BASE}/events/{event_id}",
-        "images": [{"filename": image_url, "type": "FLYERFRONT"}] if image_url else [],
-        "flyerFront": image_url
-    }
 
 # =================== Widget (Tickets) ===================
 def get_ticket_prices(session, event_id):
@@ -228,30 +232,62 @@ def get_ticket_prices(session, event_id):
         return []
     out = []
     STOPWORDS = {"barcode", "booking fee", "service fee", "info", "terms"}
-    for li in soup.select("li.onsale, li.soldout, li.offsale, li.upcoming, li.but"):
+    
+    # Buscar TODOS los elementos <li> que podrían contener tickets
+    # y procesarlos en el orden exacto en que aparecen en el HTML
+    all_li_elements = soup.select("li")
+    
+    for li in all_li_elements:
         classes = set(li.get("class") or [])
-        is_upcoming = "upcoming" in classes
-        if not is_upcoming and not li.find("input", attrs={"name": "tickettypes"}):
+        text = li.get_text(strip=True)
+        
+        # Omitir elementos que claramente no son tickets
+        if not text or len(text) < 3:
             continue
-        if   "soldout"  in classes: status = "SOLDOUT"
-        elif "offsale"  in classes: status = "NOLONGERONSALE"
-        elif "upcoming" in classes: status = "UPCOMING"
-        else:                        status = "VALID"
-        name_el = li.select_one(".pr8, .name, .title, label .pr8, .type-title")
-        release = (name_el.get_text(strip=True) if name_el else "") or ""
-        if not release or any(w in release.lower() for w in STOPWORDS):
-            continue
-        price = None
-        dp = li.get("data-price")
-        if dp:
-            try: price = float(dp.replace(",", "."))
-            except ValueError: pass
-        if price is None:
-            pe = li.select_one(".type-price, .price")
-            if pe:
-                m = re.search(r"(\d+[.,]?\d*)", pe.get_text())
-                if m: price = float(m.group(1).replace(",", "."))
-        out.append({"title": release, "priceRetail": price, "validType": status})
+            
+        # Procesar tickets con clases estándar
+        if any(cls in classes for cls in ["onsale", "soldout", "offsale", "upcoming", "but"]):
+            is_upcoming = "upcoming" in classes
+            if not is_upcoming and not li.find("input", attrs={"name": "tickettypes"}):
+                continue
+            if   "soldout"  in classes: status = "SOLDOUT"
+            elif "offsale"  in classes: status = "NOLONGERONSALE"
+            elif "upcoming" in classes: status = "UPCOMING"
+            else:                        status = "VALID"
+            name_el = li.select_one(".pr8, .name, .title, label .pr8, .type-title")
+            release = (name_el.get_text(strip=True) if name_el else "") or ""
+            if not release or any(w in release.lower() for w in STOPWORDS):
+                continue
+            price = None
+            dp = li.get("data-price")
+            if dp:
+                try: price = float(dp.replace(",", "."))
+                except ValueError: pass
+            if price is None:
+                pe = li.select_one(".type-price, .price")
+                if pe:
+                    m = re.search(r"(\d+[.,]?\d*)", pe.get_text())
+                    if m: price = float(m.group(1).replace(",", "."))
+            out.append({"title": release, "priceRetail": price, "validType": status})
+        
+        # Procesar tickets agotados con clase 'closed'
+        elif "closed" in classes:
+            # Buscar patrones de nombre y precio
+            # Ejemplo: "1st release13,00 €"
+            pattern = r"(.+?)(\d+[.,]\d+)\s*€"
+            match = re.search(pattern, text)
+            
+            if match:
+                title = match.group(1).strip()
+                price_str = match.group(2).replace(",", ".")
+                try:
+                    price = float(price_str)
+                    # Verificar que no sea un stopword
+                    if title and not any(w in title.lower() for w in STOPWORDS):
+                        out.append({"title": title, "priceRetail": price, "validType": "SOLDOUT"})
+                except ValueError:
+                    continue
+    
     return out
 
 # =================== Builder ===================
@@ -279,11 +315,19 @@ def get_venue_name_from_event(event, venue_name_mapping):
     # Último fallback: usar el nombre de la API
     return api_venue_name
 
-def build_row(event, tickets, venue_name_mapping):
+def build_row(event, tickets, venue_name_mapping, event_time_data=None):
     event_url = event.get("contentUrl") or f"/events/{event.get('id')}"
     if event_url.startswith("/"):
         event_url = "https://ra.co" + event_url
+    
+    # MANTENER EL ORDEN ORIGINAL de los tickets como aparecen en la web
+    # Esto asegura que las releases agotadas mantengan su posición original
+    # Ej: Si la Early Bird está agotada, debe seguir en releaseName1
+    tickets_original_order = tickets
+    
+    # Crear una copia ordenada solo para currentRelease (para mantener compatibilidad)
     tickets_sorted = sorted(tickets, key=lambda t: (t.get("priceRetail") is None, t.get("priceRetail") or math.inf))
+    
     image = pick_flyerfront_from_images(event.get("images") or [])
     if not image and event.get("flyerFront"):
         image = event["flyerFront"]
@@ -291,21 +335,31 @@ def build_row(event, tickets, venue_name_mapping):
     # Usar el nombre del diccionario para el venue
     venue_name = get_venue_name_from_event(event, venue_name_mapping)
 
+    # Usar datos de tiempo específicos del evento si están disponibles, sino fallback a date
+    start_time = event_time_data.get("startTime", "") if event_time_data else ""
+    end_time = event_time_data.get("endTime", "") if event_time_data else ""
+    
+    # Si no hay startTime/end_time, usar el campo date como fallback
+    if not start_time:
+        start_time = event.get("date", "")
+
     row = {
         "venue": venue_name,  # Usar el nombre exacto del diccionario
         "eventName": event.get("title", ""),
         "url": event_url,
         "date": fmt_date_spanish(event.get("date", "")),
-        "time": fmt_time_range(event.get("date", ""), ""),
+        "time": fmt_time_range(start_time, end_time),  # Usar startTime y endTime específicos
         "imageUrl": image or "",
-        "currentRelease": pick_current_release(tickets_sorted),
+        "currentRelease": pick_current_release(tickets_sorted),  # Mantener lógica original para currentRelease
         "event_date": (event.get("date", "")[:10] if event.get("date") else ""),
-        "generos": "",
+        "generos": event.get("generos", ""),
     }
 
+    # USAR EL ORDEN ORIGINAL para las releases (releaseName1-6)
+    # Esto asegura que las releases agotadas aparezcan en su posición correcta
     for i in range(6):
-        if i < len(tickets_sorted):
-            t = tickets_sorted[i]
+        if i < len(tickets_original_order):
+            t = tickets_original_order[i]
             title = (t.get("title") or "").strip()
             st = (t.get("validType") or "").upper()
             if st in ("SOLDOUT", "NOLONGERONSALE"):
@@ -357,25 +411,38 @@ if __name__ == "__main__":
                 eid = ev["id"]
                 try:
                     prices = get_ticket_prices(s, eid)
-                    row = build_row(ev, prices, VENUE_IDS)
+                    
+                    # Obtener géneros y tiempos usando GraphQL
+                    event_data = gql_get_event_genres(s, eid)
+                    ev["generos"] = event_data.get("genres", "")  # Puede ser string vacío si no hay géneros
+                    
+                    if event_data.get("genres"):
+                        print(f"[GENRES] {eid} → '{event_data.get('genres')}'")
+                    else:
+                        print(f"[GENRES] {eid} → No encontrados")
+                    
+                    # Mostrar información de tiempo si está disponible
+                    if event_data.get("startTime") or event_data.get("endTime"):
+                        start_time = event_data.get("startTime", "")
+                        end_time = event_data.get("endTime", "")
+                        print(f"[TIME] {eid} → {start_time} → {end_time}")
+                    
+                    row = build_row(ev, prices, VENUE_IDS, event_data)
                     all_rows.append(row)
-                    print(f"[OK] {eid} → '{row['eventName']}' ({len(prices)} tickets)")
+                    print(f"[OK] {eid} → '{row['eventName']}' ({len(prices)} tickets) [Géneros: {row['generos'] or 'No encontrados'}] [Time: {row['time'] or 'No time'}]")
                 except Exception as e:
                     print(f"[ERROR] Failed to process event {eid}: {e}")
-                    # Intentar fallback con HTML
+                    # Si falla el procesamiento, intentamos con datos vacíos
                     try:
-                        html = get_event_html_fallback(s, eid)
-                        if html:
-                            event_fallback = parse_event_from_html(html, eid)
-                            if event_fallback:
-                                prices = get_ticket_prices(s, eid)
-                                row = build_row(event_fallback, prices, VENUE_IDS)
-                                all_rows.append(row)
-                                print(f"[FALLBACK OK] {eid} → '{row['eventName']}' (HTML parsed)")
+                        ev["generos"] = ""
+                        prices = get_ticket_prices(s, eid)
+                        row = build_row(ev, prices, VENUE_IDS, {"genres": "", "startTime": "", "endTime": ""})
+                        all_rows.append(row)
+                        print(f"[RECOVERED] {eid} → '{row['eventName']}' ({len(prices)} tickets) [Géneros: No encontrados]")
                     except Exception as fallback_e:
-                        print(f"[FALLBACK ERROR] Could not parse HTML for {eid}: {fallback_e}")
+                        print(f"[ERROR] Could not recover event {eid}: {fallback_e}")
                 
-                time.sleep(random.uniform(1.0, 2.0))  # delay para RA
+                time.sleep(random.uniform(0.3, 0.7))  # delay optimizado para GraphQL
                 
         except Exception as e:
             print(f"[ERROR] Failed to get events for {venue_name}: {e}")
