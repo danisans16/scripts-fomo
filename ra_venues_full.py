@@ -320,13 +320,13 @@ def build_row(event, tickets, venue_name_mapping, event_time_data=None):
     if event_url.startswith("/"):
         event_url = "https://ra.co" + event_url
     
-    # MANTENER EL ORDEN ORIGINAL de los tickets como aparecen en la web
-    # Esto asegura que las releases agotadas mantengan su posición original
-    # Ej: Si la Early Bird está agotada, debe seguir en releaseName1
-    tickets_original_order = tickets
+    # ORDENAR TICKETS POR PRECIO de menor a mayor
+    # Esto asegura que las releases más baratas aparezcan primero
+    # Ej: Si la 4a release es más barata que la 2nd, aparecerá antes
+    tickets_sorted_by_price = sorted(tickets, key=lambda t: (t.get("priceRetail") is None, t.get("priceRetail") or math.inf))
     
-    # Crear una copia ordenada solo para currentRelease (para mantener compatibilidad)
-    tickets_sorted = sorted(tickets, key=lambda t: (t.get("priceRetail") is None, t.get("priceRetail") or math.inf))
+    # Mantener también una copia ordenada para currentRelease (para mantener compatibilidad)
+    tickets_sorted = tickets_sorted_by_price
     
     image = pick_flyerfront_from_images(event.get("images") or [])
     if not image and event.get("flyerFront"):
@@ -355,11 +355,11 @@ def build_row(event, tickets, venue_name_mapping, event_time_data=None):
         "generos": event.get("generos", ""),
     }
 
-    # USAR EL ORDEN ORIGINAL para las releases (releaseName1-6)
-    # Esto asegura que las releases agotadas aparezcan en su posición correcta
+    # USAR EL ORDEN POR PRECIO para las releases (releaseName1-6)
+    # Esto asegura que las releases más baratas aparezcan primero
     for i in range(6):
-        if i < len(tickets_original_order):
-            t = tickets_original_order[i]
+        if i < len(tickets_sorted_by_price):
+            t = tickets_sorted_by_price[i]
             title = (t.get("title") or "").strip()
             st = (t.get("validType") or "").upper()
             if st in ("SOLDOUT", "NOLONGERONSALE"):
