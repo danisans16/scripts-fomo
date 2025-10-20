@@ -134,6 +134,8 @@ query GET_EVENT_GENRES($id: ID!) {
     }
     startTime
     endTime
+    minimumAge
+    cost
   }
 }
 """.strip()
@@ -167,15 +169,23 @@ def gql_get_event_genres(session, event_id):
                 start_time = event_data.get("startTime", "")
                 end_time = event_data.get("endTime", "")
                 
+                # Extraer minimumAge
+                minimum_age = event_data.get("minimumAge", "")
+                
+                # Extraer cost
+                cost = event_data.get("cost", "")
+                
                 return {
                     "genres": genres_str,
                     "startTime": start_time,
-                    "endTime": end_time
+                    "endTime": end_time,
+                    "minimumAge": minimum_age,
+                    "cost": cost
                 }
-        return {"genres": "", "startTime": "", "endTime": ""}
+        return {"genres": "", "startTime": "", "endTime": "", "minimumAge": "", "cost": ""}
     except Exception as e:
         print(f"[ERROR] GraphQL genres failed for {event_id}: {e}")
-        return {"genres": "", "startTime": "", "endTime": ""}
+        return {"genres": "", "startTime": "", "endTime": "", "minimumAge": "", "cost": ""}
 
 def gql_get_events(session, venue_id, date_from=None, date_to=None, count=200):
     headers = {
@@ -343,6 +353,12 @@ def build_row(event, tickets, venue_name_mapping, event_time_data=None):
     if not start_time:
         start_time = event.get("date", "")
 
+    # Extraer minimumAge de event_time_data si está disponible
+    minimum_age = event_time_data.get("minimumAge", "") if event_time_data else ""
+    
+    # Extraer cost de event_time_data si está disponible
+    cost = event_time_data.get("cost", "") if event_time_data else ""
+    
     row = {
         "venue": venue_name,  # Usar el nombre exacto del diccionario
         "eventName": event.get("title", ""),
@@ -353,8 +369,10 @@ def build_row(event, tickets, venue_name_mapping, event_time_data=None):
         "currentRelease": pick_current_release(tickets_sorted),  # Mantener lógica original para currentRelease
         "event_date": (event.get("date", "")[:10] if event.get("date") else ""),
         "generos": event.get("generos", ""),
+        "interestedCount": event.get("interestedCount", 0),  # Agregar interestedCount desde la API
+        "minimumAge": minimum_age,  # Agregar edad mínima desde la API
+        "cost": cost,  # Agregar coste desde la API
     }
-
     # USAR EL ORDEN POR PRECIO para las releases (releaseName1-6)
     # Esto asegura que las releases más baratas aparezcan primero
     for i in range(6):
@@ -429,14 +447,15 @@ if __name__ == "__main__":
                     
                     row = build_row(ev, prices, VENUE_IDS, event_data)
                     all_rows.append(row)
-                    print(f"[OK] {eid} → '{row['eventName']}' ({len(prices)} tickets) [Géneros: {row['generos'] or 'No encontrados'}] [Time: {row['time'] or 'No time'}]")
+                    age_info = f"Edad: {row['minimumAge']}" if row['minimumAge'] else "Edad: No especificada"
+                    print(f"[OK] {eid} → '{row['eventName']}' ({len(prices)} tickets) [Géneros: {row['generos'] or 'No encontrados'}] [Time: {row['time'] or 'No time'}] [{age_info}]")
                 except Exception as e:
                     print(f"[ERROR] Failed to process event {eid}: {e}")
                     # Si falla el procesamiento, intentamos con datos vacíos
                     try:
                         ev["generos"] = ""
                         prices = get_ticket_prices(s, eid)
-                        row = build_row(ev, prices, VENUE_IDS, {"genres": "", "startTime": "", "endTime": ""})
+                        row = build_row(ev, prices, VENUE_IDS, {"genres": "", "startTime": "", "endTime": "", "minimumAge": "", "cost": ""})
                         all_rows.append(row)
                         print(f"[RECOVERED] {eid} → '{row['eventName']}' ({len(prices)} tickets) [Géneros: No encontrados]")
                     except Exception as fallback_e:
